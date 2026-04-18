@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Stadium Flow - Queues</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "secondary": "#ffe2ab",
+                        "on-primary-fixed-variant": "#00513a",
+                        "surface-container-lowest": "#0a0e14",
+                        "on-secondary-fixed-variant": "#5c4300",
+                        "tertiary": "#ffb3ac",
+                        "surface-variant": "#31353c",
+                        "on-surface-variant": "#bccac1",
+                        "tertiary-fixed": "#ffdad6",
+                        "surface-bright": "#353940",
+                        "inverse-primary": "#006c4e",
+                        "error": "#ffb4ab",
+                        "secondary-container": "#ffbf00",
+                        "primary-container": "#26a37a",
+                        "on-error-container": "#ffdad6",
+                        "primary-fixed": "#86f8c9",
+                        "surface-dim": "#10141a",
+                        "surface-tint": "#68dbae",
+                        "surface-container-highest": "#31353c",
+                        "tertiary-fixed-dim": "#ffb3ac",
+                        "on-primary-fixed": "#002115",
+                        "on-surface": "#dfe2eb",
+                        "on-primary-container": "#003121",
+                        "on-primary": "#003827",
+                        "error-container": "#93000a",
+                        "primary-fixed-dim": "#68dbae",
+                        "on-tertiary-fixed-variant": "#930010",
+                        "tertiary-container": "#ff544e",
+                        "on-secondary-fixed": "#261a00",
+                        "on-secondary-container": "#6d5000",
+                        "on-secondary": "#402d00",
+                        "outline": "#87948c",
+                        "primary": "#68dbae",
+                        "on-error": "#690005",
+                        "background": "#10141a",
+                        "outline-variant": "#3d4943",
+                        "on-tertiary": "#680008",
+                        "secondary-fixed-dim": "#fbbc00",
+                        "secondary-fixed": "#ffdfa0",
+                        "surface-container-high": "#262a31",
+                        "on-tertiary-fixed": "#410003",
+                        "inverse-surface": "#dfe2eb",
+                        "surface-container-low": "#181c22",
+                        "on-tertiary-container": "#5c0006",
+                        "on-background": "#dfe2eb",
+                        "surface-container": "#1c2026",
+                        "surface": "#10141a",
+                        "inverse-on-surface": "#2d3137"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "fontFamily": {
+                        "headline": ["Manrope"],
+                        "body": ["Inter"],
+                        "label": ["Inter"]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            background-color: #10141a;
+            color: #dfe2eb;
+            font-family: 'Inter', sans-serif;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="min-h-screen">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 bg-[#10141a] flex justify-between items-center px-6 h-16 w-full">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-[#68dbae]">stadium</span>
+<h1 class="text-[#68dbae] font-black tracking-tighter text-xl font-['Manrope'] uppercase tracking-widest">STADIUM FLOW</h1>
+</div>
+<button class="text-gray-400 hover:opacity-80 transition-opacity">
+<span class="material-symbols-outlined">account_circle</span>
+</button>
+</header>
+<main class="pt-20 pb-24 px-4 max-w-2xl mx-auto">
+<!-- Hero Metrics -->
+<section class="mb-8">
+<h2 class="font-headline font-bold text-2xl mb-4 tracking-tight">Queues</h2>
+<div class="grid grid-cols-2 gap-4">
+<div class="bg-surface-container-low p-5 rounded-lg border border-outline-variant/10">
+<p class="text-label-sm text-on-surface-variant font-label uppercase tracking-[0.05em] mb-1">Avg. Wait</p>
+<div class="flex items-end gap-2">
+<span class="font-headline font-extrabold text-4xl text-primary">8</span>
+<span class="text-on-surface-variant mb-1 font-medium">mins</span>
+</div>
+</div>
+<div class="bg-surface-container-low p-5 rounded-lg border border-outline-variant/10">
+<p class="text-label-sm text-on-surface-variant font-label uppercase tracking-[0.05em] mb-1">Peak Flow</p>
+<div class="flex items-end gap-2">
+<span class="font-headline font-extrabold text-4xl text-secondary-container">78%</span>
+<span class="text-on-surface-variant mb-1 font-medium">Cap</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Gates Section -->
+<section class="mb-10">
+<div class="flex justify-between items-center mb-4">
+<h3 class="font-headline font-bold text-lg text-on-surface">Stadium Gates</h3>
+<span class="text-xs bg-primary/10 text-primary px-2 py-1 rounded-full font-medium">Live Feed</span>
+</div>
+<div class="space-y-3">
+<!-- Gate A -->
+<div class="group bg-surface-container p-4 rounded-lg flex items-center justify-between hover:bg-surface-container-high transition-all active:scale-[0.98]">
+<div class="flex items-center gap-4">
+<div class="h-10 w-10 bg-surface-container-highest rounded-md flex items-center justify-center font-headline font-bold text-primary">A</div>
+<div>
+<h4 class="font-bold text-on-surface">North Entrance</h4>
+<div class="flex items-center gap-2">
+<span class="h-2 w-2 rounded-full bg-primary shadow-[0_0_8px_rgba(104,219,174,0.6)]"></span>
+<span class="text-sm text-on-surface-variant">Optimal Flow</span>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-6">
+<div class="text-right">
+<span class="block font-headline font-bold text-xl">3m</span>
+<span class="text-[10px] text-on-surface-variant uppercase tracking-wider">Estimated</span>
+</div>
+<button class="bg-surface-variant h-10 w-10 rounded-full flex items-center justify-center text-on-surface hover:bg-primary hover:text-on-primary transition-colors">
+<span class="material-symbols-outlined">map</span>
+</button>
+</div>
+</div>
+<!-- Gate B -->
+<div class="group bg-surface-container p-4 rounded-lg flex items-center justify-between hover:bg-surface-container-high transition-all active:scale-[0.98]">
+<div class="flex items-center gap-4">
+<div class="h-10 w-10 bg-surface-container-highest rounded-md flex items-center justify-center font-headline font-bold text-primary">B</div>
+<div>
+<h4 class="font-bold text-on-surface">Northwest Gate</h4>
+<div class="flex items-center gap-2">
+<span class="h-2 w-2 rounded-full bg-primary"></span>
+<span class="text-sm text-on-surface-variant">Fast Track Open</span>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-6">
+<div class="text-right">
+<span class="block font-headline font-bold text-xl">5m</span>
+<span class="text-[10px] text-on-surface-variant uppercase tracking-wider">Estimated</span>
+</div>
+<button class="bg-surface-variant h-10 w-10 rounded-full flex items-center justify-center text-on-surface hover:bg-primary hover:text-on-primary transition-colors">
+<span class="material-symbols-outlined">map</span>
+</button>
+</div>
+</div>
+<!-- Gate C -->
+<div class="group bg-surface-container-high p-4 rounded-lg flex items-center justify-between shadow-[inset_0_0_0_1px_rgba(255,191,0,0.1)]">
+<div class="flex items-center gap-4">
+<div class="h-10 w-10 bg-secondary-container/20 rounded-md flex items-center justify-center font-headline font-bold text-secondary-container">C</div>
+<div>
+<h4 class="font-bold text-on-surface">West Plaza</h4>
+<div class="flex items-center gap-2">
+<span class="h-2 w-2 rounded-full bg-secondary-container animate-pulse"></span>
+<span class="text-sm text-secondary-container">Increasing Volume</span>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-6">
+<div class="text-right">
+<span class="block font-headline font-bold text-xl text-secondary-container">12m</span>
+<span class="text-[10px] text-on-surface-variant uppercase tracking-wider">Estimated</span>
+</div>
+<button class="bg-surface-variant h-10 w-10 rounded-full flex items-center justify-center text-on-surface">
+<span class="material-symbols-outlined">map</span>
+</button>
+</div>
+</div>
+<!-- Gate D -->
+<div class="group bg-surface-container p-4 rounded-lg flex items-center justify-between hover:bg-surface-container-high transition-all active:scale-[0.98]">
+<div class="flex items-center gap-4">
+<div class="h-10 w-10 bg-surface-container-highest rounded-md flex items-center justify-center font-headline font-bold text-primary">D</div>
+<div>
+<h4 class="font-bold text-on-surface">South Gate</h4>
+<div class="flex items-center gap-2">
+<span class="h-2 w-2 rounded-full bg-primary"></span>
+<span class="text-sm text-on-surface-variant">Smooth</span>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-6">
+<div class="text-right">
+<span class="block font-headline font-bold text-xl">4m</span>
+<span class="text-[10px] text-on-surface-variant uppercase tracking-wider">Estimated</span>
+</div>
+<button class="bg-surface-variant h-10 w-10 rounded-full flex items-center justify-center text-on-surface hover:bg-primary hover:text-on-primary transition-colors">
+<span class="material-symbols-outlined">map</span>
+</button>
+</div>
+</div>
+<!-- Gate E -->
+<div class="group bg-surface-container-high border-l-4 border-tertiary-container p-4 rounded-lg flex items-center justify-between">
+<div class="flex items-center gap-4">
+<div class="h-10 w-10 bg-tertiary-container/20 rounded-md flex items-center justify-center font-headline font-bold text-tertiary-container">E</div>
+<div>
+<h4 class="font-bold text-on-surface">Southeast Hub</h4>
+<div class="flex items-center gap-2">
+<span class="h-2 w-2 rounded-full bg-tertiary-container"></span>
+<span class="text-sm text-tertiary-container font-medium">Heavy Congestion</span>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-6">
+<div class="text-right">
+<span class="block font-headline font-bold text-xl text-tertiary-container">25m</span>
+<span class="text-[10px] text-on-surface-variant uppercase tracking-wider">Estimated</span>
+</div>
+<button class="bg-surface-variant h-10 w-10 rounded-full flex items-center justify-center text-on-surface">
+<span class="material-symbols-outlined">map</span>
+</button>
+</div>
+</div>
+<!-- Gate F -->
+<div class="group bg-surface-container p-4 rounded-lg flex items-center justify-between hover:bg-surface-container-high transition-all active:scale-[0.98]">
+<div class="flex items-center gap-4">
+<div class="h-10 w-10 bg-surface-container-highest rounded-md flex items-center justify-center font-headline font-bold text-primary">F</div>
+<div>
+<h4 class="font-bold text-on-surface">Main Atrium</h4>
+<div class="flex items-center gap-2">
+<span class="h-2 w-2 rounded-full bg-primary"></span>
+<span class="text-sm text-on-surface-variant">Steady Flow</span>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-6">
+<div class="text-right">
+<span class="block font-headline font-bold text-xl">7m</span>
+<span class="text-[10px] text-on-surface-variant uppercase tracking-wider">Estimated</span>
+</div>
+<button class="bg-surface-variant h-10 w-10 rounded-full flex items-center justify-center text-on-surface hover:bg-primary hover:text-on-primary transition-colors">
+<span class="material-symbols-outlined">map</span>
+</button>
+</div>
+</div>
+</div>
+</section>
+<!-- Facilities Section -->
+<section class="mb-6">
+<h3 class="font-headline font-bold text-lg text-on-surface mb-4">Top Facilities</h3>
+<div class="grid grid-cols-2 gap-4">
+<!-- Restrooms -->
+<div class="bg-surface-container p-4 rounded-lg border border-outline-variant/5">
+<div class="flex items-start justify-between mb-3">
+<span class="material-symbols-outlined text-primary">wc</span>
+<div class="flex items-center gap-1.5">
+<span class="h-2 w-2 rounded-full bg-primary"></span>
+<span class="text-xs text-primary font-bold">LOW</span>
+</div>
+</div>
+<h4 class="font-bold text-sm mb-1">Restrooms (L2)</h4>
+<p class="text-on-surface-variant text-xs mb-4">West Concourse</p>
+<div class="flex items-center justify-between">
+<span class="font-headline font-bold text-lg">2m</span>
+<button class="bg-surface-variant text-on-surface px-3 py-1 rounded-full text-xs font-medium hover:bg-primary hover:text-on-primary transition-colors">MAP</button>
+</div>
+</div>
+<!-- Merch -->
+<div class="bg-surface-container p-4 rounded-lg border border-outline-variant/5">
+<div class="flex items-start justify-between mb-3">
+<span class="material-symbols-outlined text-secondary-container">local_mall</span>
+<div class="flex items-center gap-1.5">
+<span class="h-2 w-2 rounded-full bg-secondary-container"></span>
+<span class="text-xs text-secondary-container font-bold">MED</span>
+</div>
+</div>
+<h4 class="font-bold text-sm mb-1">Official Merch</h4>
+<p class="text-on-surface-variant text-xs mb-4">Main Plaza</p>
+<div class="flex items-center justify-between">
+<span class="font-headline font-bold text-lg">15m</span>
+<button class="bg-surface-variant text-on-surface px-3 py-1 rounded-full text-xs font-medium hover:bg-primary hover:text-on-primary transition-colors">MAP</button>
+</div>
+</div>
+</div>
+</section>
+<!-- Ad/Promo Area -->
+<div class="relative h-32 rounded-xl overflow-hidden mb-12 flex items-center px-6">
+<div class="absolute inset-0 z-0">
+<img class="w-full h-full object-cover brightness-[0.4]" data-alt="vibrant blue and teal neon stadium lights illuminating a crowded arena at night with cinematic lens flare" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAcLqHpWwTazHFWc60zF5KmNkK1cUXbdeImw1we4JFJ6j-aOx6lwz2218yrdiarCCEv9GpTBLSe3JfzmT-M-fMg5OFKTVLNoLvSfPIBjZ_u-ki7mUcE5xpIe778pYpsZJOW5ydyo26EEu5GGqnmYSKbkP8x6q0hhXW2tj5eE8zj6mvgjO4bGvuO43IhIitzR7AEwwNpGggE1ew14_VLjQ1MO-4zc_-PQsmtbHzb60aArv794wHq8bZcDHhw_qjQqDZcoMt8a-WzzIwB"/>
+</div>
+<div class="relative z-10">
+<p class="text-primary font-bold text-xs uppercase tracking-widest mb-1">Pro Tip</p>
+<h4 class="text-white font-headline font-bold text-lg leading-tight">Avoid the halftime rush.<br/>Pre-order dining now.</h4>
+</div>
+<button class="relative z-10 ml-auto bg-primary-container text-on-primary-container p-3 rounded-full shadow-lg">
+<span class="material-symbols-outlined">restaurant</span>
+</button>
+</div>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 w-full z-50 rounded-t-3xl border-t border-[#3d4943]/15 bg-[#10141a]/80 backdrop-blur-xl shadow-[0_-8px_24px_rgba(0,56,39,0.2)] flex justify-around items-center h-20 px-4 pb-4 w-full">
+<a class="flex flex-col items-center justify-center text-gray-500 hover:bg-[#31353c] transition-colors active:scale-90 duration-150" href="#">
+<span class="material-symbols-outlined" data-icon="map">map</span>
+<span class="font-['Inter'] text-[10px] font-medium tracking-wide mt-1">Map</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-[#68dbae]/10 text-[#68dbae] rounded-xl px-4 py-1.5 transition-colors active:scale-90 duration-150" href="#">
+<span class="material-symbols-outlined" data-icon="hourglass_empty">hourglass_empty</span>
+<span class="font-['Inter'] text-[10px] font-medium tracking-wide mt-1">Queues</span>
+</a>
+<a class="flex flex-col items-center justify-center text-gray-500 hover:bg-[#31353c] transition-colors active:scale-90 duration-150" href="#">
+<span class="material-symbols-outlined" data-icon="restaurant">restaurant</span>
+<span class="font-['Inter'] text-[10px] font-medium tracking-wide mt-1">Dining</span>
+</a>
+<a class="flex flex-col items-center justify-center text-gray-500 hover:bg-[#31353c] transition-colors active:scale-90 duration-150" href="#">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+<span class="font-['Inter'] text-[10px] font-medium tracking-wide mt-1">Alerts</span>
+</a>
+</nav>
+</body></html>

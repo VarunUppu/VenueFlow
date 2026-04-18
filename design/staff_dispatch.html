@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Staff Dispatch | VenueFlow</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "secondary": "#ffe2ab",
+                        "on-primary-fixed-variant": "#00513a",
+                        "surface-container-lowest": "#0a0e14",
+                        "on-secondary-fixed-variant": "#5c4300",
+                        "tertiary": "#ffb3ac",
+                        "surface-variant": "#31353c",
+                        "on-surface-variant": "#bccac1",
+                        "tertiary-fixed": "#ffdad6",
+                        "surface-bright": "#353940",
+                        "inverse-primary": "#006c4e",
+                        "error": "#ffb4ab",
+                        "secondary-container": "#ffbf00",
+                        "primary-container": "#26a37a",
+                        "on-error-container": "#ffdad6",
+                        "primary-fixed": "#86f8c9",
+                        "surface-dim": "#10141a",
+                        "surface-tint": "#68dbae",
+                        "surface-container-highest": "#31353c",
+                        "tertiary-fixed-dim": "#ffb3ac",
+                        "on-primary-fixed": "#002115",
+                        "on-surface": "#dfe2eb",
+                        "on-primary-container": "#003121",
+                        "on-primary": "#003827",
+                        "error-container": "#93000a",
+                        "primary-fixed-dim": "#68dbae",
+                        "on-tertiary-fixed-variant": "#930010",
+                        "tertiary-container": "#ff544e",
+                        "on-secondary-fixed": "#261a00",
+                        "on-secondary-container": "#6d5000",
+                        "on-secondary": "#402d00",
+                        "outline": "#87948c",
+                        "primary": "#68dbae",
+                        "on-error": "#690005",
+                        "background": "#10141a",
+                        "outline-variant": "#3d4943",
+                        "on-tertiary": "#680008",
+                        "secondary-fixed-dim": "#fbbc00",
+                        "secondary-fixed": "#ffdfa0",
+                        "surface-container-high": "#262a31",
+                        "on-tertiary-fixed": "#410003",
+                        "inverse-surface": "#dfe2eb",
+                        "surface-container-low": "#181c22",
+                        "on-tertiary-container": "#5c0006",
+                        "on-background": "#dfe2eb",
+                        "surface-container": "#1c2026",
+                        "surface": "#10141a",
+                        "inverse-on-surface": "#2d3137"
+                    },
+                    "fontFamily": {
+                        "headline": ["Manrope"],
+                        "body": ["Inter"],
+                        "label": ["Inter"]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-panel {
+            background: rgba(49, 53, 60, 0.4);
+            backdrop-filter: blur(20px);
+        }
+        body {
+            background-color: #10141a;
+            color: #dfe2eb;
+            font-family: 'Inter', sans-serif;
+        }
+    </style>
+</head>
+<body class="overflow-hidden">
+<!-- TopAppBar -->
+<header class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-6 py-4 bg-[#10141a]/80 backdrop-blur-xl transition-colors">
+<div class="flex items-center gap-8">
+<span class="text-xl font-black text-[#68dbae] tracking-tighter font-headline">VenueFlow</span>
+<nav class="hidden md:flex gap-6">
+<a class="font-headline font-bold tracking-tight text-slate-400 hover:bg-[#31353c] transition-colors px-3 py-1 rounded" href="#">Dashboard</a>
+<a class="font-headline font-bold tracking-tight text-[#68dbae] border-b-2 border-[#68dbae] px-3 py-1" href="#">Operations</a>
+</nav>
+</div>
+<div class="flex items-center gap-4">
+<button class="bg-[#26a37a] text-[#003121] px-4 py-2 rounded-xl font-bold font-headline text-sm active:scale-95 duration-150 transition-all">
+                Declare Incident
+            </button>
+<span class="material-symbols-outlined text-slate-400 cursor-pointer p-2 hover:bg-[#31353c] rounded-full transition-colors" data-icon="notifications">notifications</span>
+<span class="material-symbols-outlined text-slate-400 cursor-pointer p-2 hover:bg-[#31353c] rounded-full transition-colors" data-icon="account_circle">account_circle</span>
+</div>
+</header>
+<!-- SideNavBar (Hidden on Mobile) -->
+<aside class="hidden md:flex flex-col h-screen w-64 fixed left-0 top-0 pt-20 bg-[#10141a] border-r border-[#3d4943]/10 z-40 transition-all duration-200 ease-in-out">
+<div class="px-6 mb-8">
+<h2 class="font-headline font-bold text-lg text-white">Command Center</h2>
+<p class="text-xs text-slate-500">Stadium East Wing</p>
+</div>
+<nav class="flex-1 space-y-1">
+<a class="flex items-center gap-3 text-slate-400 px-4 py-3 mx-2 transition-all hover:bg-[#31353c] rounded-lg" href="#">
+<span class="material-symbols-outlined" data-icon="map">map</span>
+<span class="font-inter text-sm font-medium">Map Overview</span>
+</a>
+<a class="flex items-center gap-3 text-slate-400 px-4 py-3 mx-2 transition-all hover:bg-[#31353c] rounded-lg" href="#">
+<span class="material-symbols-outlined" data-icon="grid_view">grid_view</span>
+<span class="font-inter text-sm font-medium">Zone Management</span>
+</a>
+<a class="flex items-center gap-3 text-slate-400 px-4 py-3 mx-2 transition-all hover:bg-[#31353c] rounded-lg" href="#">
+<span class="material-symbols-outlined" data-icon="group">group</span>
+<span class="font-inter text-sm font-medium">Crowd Analytics</span>
+</a>
+<a class="flex items-center gap-3 bg-[#1b2129] text-[#68dbae] px-4 py-3 mx-2 rounded-lg font-inter text-sm font-medium" href="#">
+<span class="material-symbols-outlined" data-icon="conveyor_belt">conveyor_belt</span>
+<span>Staff Dispatch</span>
+</a>
+<a class="flex items-center gap-3 text-slate-400 px-4 py-3 mx-2 transition-all hover:bg-[#31353c] rounded-lg" href="#">
+<span class="material-symbols-outlined" data-icon="warning">warning</span>
+<span class="font-inter text-sm font-medium">Incident Logs</span>
+</a>
+</nav>
+<div class="p-4">
+<button class="w-full bg-[#31353c] hover:bg-[#3d4943] text-white py-3 rounded-xl font-bold font-headline text-sm transition-colors">
+                Clear Zone
+            </button>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="pt-20 pb-24 md:pb-0 md:pl-64 h-screen flex flex-col md:flex-row overflow-hidden bg-surface">
+<!-- Left: Staff List Panel -->
+<section class="w-full md:w-80 flex-shrink-0 flex flex-col bg-surface-container-low border-r border-outline-variant/10">
+<div class="p-6">
+<h3 class="text-white font-headline font-bold text-xl mb-4">Active Personnel</h3>
+<div class="flex gap-2 mb-6">
+<span class="bg-primary text-on-primary px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-widest">All (24)</span>
+<span class="bg-surface-container-highest text-slate-400 px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-widest cursor-pointer hover:text-white">Security</span>
+</div>
+<div class="space-y-4 overflow-y-auto max-h-[calc(100vh-250px)] pr-2 custom-scrollbar">
+<!-- Staff Item -->
+<div class="p-4 bg-surface-container-high rounded-xl hover:bg-surface-variant transition-colors cursor-pointer group">
+<div class="flex justify-between items-start mb-2">
+<span class="text-primary font-bold font-headline">Unit Alpha 7</span>
+<span class="text-[10px] text-primary-fixed bg-on-primary-fixed-variant px-2 py-0.5 rounded-full font-label uppercase">Security</span>
+</div>
+<div class="flex items-center gap-2 text-xs text-slate-400">
+<span class="material-symbols-outlined text-[14px]" data-icon="location_on">location_on</span>
+<span>Gate 4, Perimeter</span>
+</div>
+<div class="mt-3 flex items-center justify-between">
+<div class="h-1.5 w-24 bg-surface-container rounded-full overflow-hidden">
+<div class="h-full bg-primary w-3/4"></div>
+</div>
+<span class="text-[10px] font-bold text-slate-500 uppercase tracking-tighter">Status: PATROL</span>
+</div>
+</div>
+<!-- Staff Item -->
+<div class="p-4 bg-surface-container-high rounded-xl hover:bg-surface-variant transition-colors cursor-pointer group">
+<div class="flex justify-between items-start mb-2">
+<span class="text-white font-bold font-headline">Med-Unit 2</span>
+<span class="text-[10px] text-tertiary bg-on-tertiary-fixed-variant px-2 py-0.5 rounded-full font-label uppercase">Medical</span>
+</div>
+<div class="flex items-center gap-2 text-xs text-slate-400">
+<span class="material-symbols-outlined text-[14px]" data-icon="location_on">location_on</span>
+<span>Section 104, Aisle B</span>
+</div>
+<div class="mt-3 flex items-center justify-between">
+<div class="h-1.5 w-24 bg-surface-container rounded-full overflow-hidden">
+<div class="h-full bg-tertiary w-full"></div>
+</div>
+<span class="text-[10px] font-bold text-tertiary uppercase tracking-tighter">Status: RESPONDING</span>
+</div>
+</div>
+<!-- Staff Item -->
+<div class="p-4 bg-surface-container-high rounded-xl hover:bg-surface-variant transition-colors cursor-pointer group">
+<div class="flex justify-between items-start mb-2">
+<span class="text-white font-bold font-headline">Clean-Team 4</span>
+<span class="text-[10px] text-secondary bg-on-secondary-fixed-variant px-2 py-0.5 rounded-full font-label uppercase">Cleaning</span>
+</div>
+<div class="flex items-center gap-2 text-xs text-slate-400">
+<span class="material-symbols-outlined text-[14px]" data-icon="location_on">location_on</span>
+<span>Food Court, North</span>
+</div>
+<div class="mt-3 flex items-center justify-between">
+<div class="h-1.5 w-24 bg-surface-container rounded-full overflow-hidden">
+<div class="h-full bg-secondary w-1/4"></div>
+</div>
+<span class="text-[10px] font-bold text-slate-500 uppercase tracking-tighter">Status: IDLE</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Center: Map View -->
+<section class="flex-1 relative bg-surface-container-lowest">
+<div class="absolute inset-0 z-0">
+<img class="w-full h-full object-cover opacity-30 grayscale" data-alt="Modern architectural blueprint of a stadium floor plan with glowing neon teal and blue outlines representing digital tracking markers" data-location="Stamford Bridge Stadium Interior" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCfyqfoLNWtvThCGAYy5Y-li04sgsSDsLdUVDLDnQQkuguNGzowTGmhM8ZW9EpbyS1L_8L1nSoCl_9gHvOi4Gb_2D9GzZ8vX4Yfwiq2ZiI5hlDnoBjwYJRtKN2CVA4CuemnBOa3UYzc7xPCc4OdJNsRcJBXkq-dq2BWmA3zvSOhDMdyFr9itF6ErgBQ7EMPkt1RyB-4Kvrn1in319wsvO71pDKna-eGiC6Le_fTCrKffRoAV14gdRytkJb0RkB-4iTJderdgvPtkdzh"/>
+<div class="absolute inset-0 bg-gradient-to-t from-surface via-transparent to-surface opacity-60"></div>
+</div>
+<!-- Map UI Overlays -->
+<div class="absolute inset-0 p-8 pointer-events-none z-10">
+<div class="flex justify-between items-start w-full">
+<div class="bg-[#1b2129]/80 backdrop-blur-md p-4 rounded-2xl pointer-events-auto shadow-xl border border-outline-variant/10">
+<h4 class="font-headline font-bold text-sm mb-1 text-[#68dbae]">Live Tracking Active</h4>
+<p class="text-[10px] text-slate-400 uppercase tracking-widest">Signal Strength: 98%</p>
+</div>
+<div class="flex flex-col gap-2 pointer-events-auto">
+<button class="bg-[#31353c] p-2 rounded-lg text-white hover:bg-[#3d4943] transition-colors">
+<span class="material-symbols-outlined" data-icon="zoom_in">zoom_in</span>
+</button>
+<button class="bg-[#31353c] p-2 rounded-lg text-white hover:bg-[#3d4943] transition-colors">
+<span class="material-symbols-outlined" data-icon="zoom_out">zoom_out</span>
+</button>
+<button class="bg-[#31353c] p-2 rounded-lg text-white hover:bg-[#3d4943] transition-colors">
+<span class="material-symbols-outlined" data-icon="layers">layers</span>
+</button>
+</div>
+</div>
+<!-- Custom Map Markers (Simulated) -->
+<div class="absolute top-1/2 left-1/3 w-8 h-8 pointer-events-auto cursor-pointer">
+<div class="absolute inset-0 bg-primary/40 rounded-full animate-ping"></div>
+<div class="relative bg-primary text-surface p-1 rounded-full shadow-[0_0_15px_rgba(104,219,174,0.6)] flex items-center justify-center">
+<span class="material-symbols-outlined text-[18px]" data-icon="shield" style="font-variation-settings: 'FILL' 1;">shield</span>
+</div>
+</div>
+<div class="absolute bottom-1/3 right-1/4 w-8 h-8 pointer-events-auto cursor-pointer">
+<div class="absolute inset-0 bg-tertiary/40 rounded-full animate-ping"></div>
+<div class="relative bg-tertiary text-surface p-1 rounded-full shadow-[0_0_15px_rgba(255,84,78,0.6)] flex items-center justify-center">
+<span class="material-symbols-outlined text-[18px]" data-icon="medical_services" style="font-variation-settings: 'FILL' 1;">medical_services</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Right: Dispatch Form -->
+<section class="hidden lg:flex w-96 flex-shrink-0 flex-col bg-surface-container-low p-6 border-l border-outline-variant/10">
+<h3 class="text-white font-headline font-bold text-xl mb-6">Dispatch New Task</h3>
+<form class="space-y-6">
+<div>
+<label class="block text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-2">Priority Level</label>
+<div class="grid grid-cols-3 gap-2">
+<button class="py-2 px-1 rounded-lg bg-surface-container-highest border border-outline-variant/20 text-xs font-medium text-slate-400 hover:border-primary transition-all" type="button">Routine</button>
+<button class="py-2 px-1 rounded-lg bg-secondary-container/10 border border-secondary-container/40 text-xs font-bold text-secondary-container" type="button">Urgent</button>
+<button class="py-2 px-1 rounded-lg bg-tertiary-container/10 border border-tertiary-container/40 text-xs font-bold text-tertiary-container" type="button">Critical</button>
+</div>
+</div>
+<div>
+<label class="block text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-2">Assign Team</label>
+<select class="w-full bg-surface-container-high border-none rounded-xl text-white font-inter text-sm focus:ring-2 focus:ring-primary focus:bg-surface-container-highest transition-all">
+<option>Select available unit...</option>
+<option>Unit Alpha 7 (Security)</option>
+<option>Unit Beta 12 (Security)</option>
+<option>Clean-Team 4 (Cleaning)</option>
+</select>
+</div>
+<div>
+<label class="block text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-2">Dispatch Location</label>
+<div class="relative">
+<input class="w-full bg-surface-container-high border-none rounded-xl text-white font-inter text-sm pl-10 focus:ring-2 focus:ring-primary focus:bg-surface-container-highest transition-all" placeholder="Search zone or gate..." type="text"/>
+<span class="material-symbols-outlined absolute left-3 top-2.5 text-slate-500" data-icon="search">search</span>
+</div>
+</div>
+<div>
+<label class="block text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-2">Instruction Details</label>
+<textarea class="w-full bg-surface-container-high border-none rounded-xl text-white font-inter text-sm focus:ring-2 focus:ring-primary focus:bg-surface-container-highest transition-all" placeholder="Describe the task..." rows="4"></textarea>
+</div>
+<div class="pt-4">
+<button class="w-full bg-gradient-to-br from-[#68dbae] to-[#26a37a] text-[#10141a] py-4 rounded-xl font-black font-headline tracking-tight shadow-[0_8px_24px_rgba(0,56,39,0.4)] hover:opacity-90 active:scale-95 transition-all">
+                        CONFIRM DISPATCH
+                    </button>
+</div>
+</form>
+<div class="mt-auto pt-8 border-t border-outline-variant/10">
+<div class="bg-surface-container-highest/30 p-4 rounded-2xl flex items-center gap-4">
+<div class="w-10 h-10 bg-[#68dbae]/10 rounded-full flex items-center justify-center text-[#68dbae]">
+<span class="material-symbols-outlined" data-icon="info">info</span>
+</div>
+<div>
+<p class="text-xs font-bold text-white">System Tip</p>
+<p class="text-[10px] text-slate-400">Security Unit Alpha 7 is closest to Gate 4 incident.</p>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- BottomNavBar (Visible on Mobile) -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex md:hidden justify-around items-end px-4 pb-6 bg-[#10141a]/90 backdrop-blur-2xl transition-all">
+<a class="flex flex-col items-center justify-center text-slate-400 p-3 active:opacity-80 scale-90 active:scale-100" href="#">
+<span class="material-symbols-outlined" data-icon="explore">explore</span>
+<span class="font-inter text-[10px] uppercase tracking-widest mt-1">Map</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-gradient-to-br from-[#68dbae] to-[#26a37a] text-[#10141a] rounded-2xl p-3 mb-2 active:opacity-80 scale-90 active:scale-100" href="#">
+<span class="material-symbols-outlined" data-icon="conveyor_belt">conveyor_belt</span>
+<span class="font-inter text-[10px] uppercase tracking-widest mt-1">Staff</span>
+</a>
+<a class="flex flex-col items-center justify-center text-slate-400 p-3 active:opacity-80 scale-90 active:scale-100" href="#">
+<span class="material-symbols-outlined" data-icon="fastfood">fastfood</span>
+<span class="font-inter text-[10px] uppercase tracking-widest mt-1">Dining</span>
+</a>
+<a class="flex flex-col items-center justify-center text-slate-400 p-3 active:opacity-80 scale-90 active:scale-100" href="#">
+<span class="material-symbols-outlined" data-icon="notifications_active">notifications_active</span>
+<span class="font-inter text-[10px] uppercase tracking-widest mt-1">Alerts</span>
+</a>
+</nav>
+<!-- Floating Dispatch Action (Mobile Only) -->
+<button class="fixed bottom-24 right-6 md:hidden w-14 h-14 bg-primary rounded-full shadow-[0_8px_24px_rgba(0,56,39,0.4)] flex items-center justify-center text-on-primary z-50 active:scale-90 transition-transform">
+<span class="material-symbols-outlined" data-icon="add">add</span>
+</button>
+</body></html>

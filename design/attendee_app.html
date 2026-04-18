@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>VenueFlow Attendee</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&amp;family=Inter:wght@400;500;600&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "on-secondary-fixed": "#261a00",
+            "on-secondary-container": "#6d5000",
+            "on-primary-container": "#003121",
+            "tertiary": "#ffb3ac",
+            "surface-container-highest": "#31353c",
+            "surface": "#10141a",
+            "tertiary-container": "#ff544e",
+            "inverse-primary": "#006c4e",
+            "secondary-fixed": "#ffdfa0",
+            "on-surface": "#dfe2eb",
+            "error-container": "#93000a",
+            "tertiary-fixed-dim": "#ffb3ac",
+            "surface-container": "#1c2026",
+            "primary-fixed": "#86f8c9",
+            "surface-container-low": "#181c22",
+            "on-primary-fixed-variant": "#00513a",
+            "on-primary-fixed": "#002115",
+            "on-secondary": "#402d00",
+            "primary-container": "#26a37a",
+            "tertiary-fixed": "#ffdad6",
+            "error": "#ffb4ab",
+            "surface-bright": "#353940",
+            "on-background": "#dfe2eb",
+            "background": "#10141a",
+            "on-tertiary-container": "#5c0006",
+            "surface-tint": "#68dbae",
+            "on-surface-variant": "#bccac1",
+            "on-error-container": "#ffdad6",
+            "outline": "#87948c",
+            "outline-variant": "#3d4943",
+            "surface-container-high": "#262a31",
+            "primary-fixed-dim": "#68dbae",
+            "on-tertiary-fixed": "#410003",
+            "secondary": "#ffe2ab",
+            "on-tertiary": "#680008",
+            "primary": "#68dbae",
+            "inverse-on-surface": "#2d3137",
+            "on-primary": "#003827",
+            "secondary-container": "#ffbf00",
+            "on-tertiary-fixed-variant": "#930010",
+            "surface-variant": "#31353c",
+            "inverse-surface": "#dfe2eb",
+            "secondary-fixed-dim": "#fbbc00",
+            "surface-container-lowest": "#0a0e14",
+            "surface-dim": "#10141a",
+            "on-secondary-fixed-variant": "#5c4300",
+            "on-error": "#690005"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "1rem",
+            "xl": "1.5rem",
+            "full": "9999px"
+          },
+          "fontFamily": {
+            "headline": ["Manrope", "sans-serif"],
+            "body": ["Inter", "sans-serif"],
+            "label": ["Inter", "sans-serif"]
+          }
+        },
+      },
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    }
+    .glass {
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+    }
+    .hide-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface text-on-surface font-body selection:bg-primary selection:text-on-primary min-h-screen">
+<div class="max-w-md mx-auto min-h-screen flex flex-col relative pb-32">
+<header class="fixed top-0 left-0 right-0 z-50 max-w-md mx-auto px-4 pt-4">
+<div class="bg-[#10141a]/80 backdrop-blur-xl flex justify-between items-center px-6 py-4 w-full rounded-2xl shadow-lg">
+<div class="flex items-center gap-2">
+<span class="font-manrope font-black text-xl text-[#68dbae] tracking-tighter">VenueFlow</span>
+</div>
+<div class="flex items-center gap-4">
+<button class="text-slate-400 hover:bg-[#31353c] p-2 rounded-full transition-colors">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="text-slate-400 hover:bg-[#31353c] p-2 rounded-full transition-colors">
+<span class="material-symbols-outlined">account_circle</span>
+</button>
+</div>
+</div>
+<div class="mt-3 bg-primary-container/20 border border-primary/20 backdrop-blur-md rounded-xl p-3 flex items-center gap-3 animate-pulse">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">info</span>
+<p class="text-sm font-medium text-primary">Head to Gate C — 2 min queue</p>
+<span class="material-symbols-outlined ml-auto text-xs text-primary/60">chevron_right</span>
+</div>
+</header>
+<main class="flex-1 mt-36 px-4 space-y-6">
+<section class="relative w-full h-[380px] rounded-xl overflow-hidden shadow-2xl group">
+<div class="absolute inset-0 bg-surface-container-low">
+<img class="w-full h-full object-cover opacity-60" data-alt="stylized birds eye view stadium architectural plan with glowing green and amber heat map zones over modern blue infrastructure" data-location="Stadium Map" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAGGlVnndfTA-upMgC5c56cN6d6ONt4jUfssayrEb5yiN7zP8r4FEYaXN5bCsrgsRMgdkWlipBgw7qtp2OL_XdVBxTvmJpsvKjofrnlsfDr1shJNJB2UIa1yJ1li82pENbdBjkf8Z3WvBoAGuD59ZJndzPC8ciy5KtCLYouOjiBfeNMPuO4lPID-_0Y9wqwRZB7sQR5ajH_pPwh0oDkz9usDi1MG2hAHVqiMjWa12NOElsH7LH5rqAG9oY8GaPf9sk2VCHWmrkULJwm"/>
+</div>
+<div class="absolute inset-0 bg-gradient-to-t from-surface via-transparent to-transparent"></div>
+<div class="absolute inset-0 p-4 pointer-events-none">
+<div class="h-full w-full relative">
+<div class="absolute top-1/4 left-1/3 w-4 h-4 bg-primary rounded-full shadow-[0_0_15px_#68dbae] animate-ping"></div>
+<div class="absolute top-1/4 left-1/3 w-4 h-4 bg-primary rounded-full border-2 border-surface"></div>
+<div class="absolute bottom-10 right-4 bg-surface-container-highest/90 backdrop-blur p-2 rounded-lg flex flex-col gap-2 pointer-events-auto">
+<button class="p-2 bg-surface-container hover:bg-primary/20 rounded transition-colors">
+<span class="material-symbols-outlined text-on-surface">add</span>
+</button>
+<button class="p-2 bg-surface-container hover:bg-primary/20 rounded transition-colors">
+<span class="material-symbols-outlined text-on-surface">remove</span>
+</button>
+<button class="p-2 bg-primary rounded transition-colors scale-95 active:scale-90 duration-150">
+<span class="material-symbols-outlined text-on-primary">my_location</span>
+</button>
+</div>
+</div>
+</div>
+<div class="absolute top-4 left-4 flex gap-2">
+<div class="bg-surface-container-highest/90 backdrop-blur-md px-3 py-1.5 rounded-full flex items-center gap-2">
+<div class="w-2 h-2 rounded-full bg-primary"></div>
+<span class="text-[10px] uppercase font-bold tracking-widest text-on-surface">Low Density</span>
+</div>
+<div class="bg-surface-container-highest/90 backdrop-blur-md px-3 py-1.5 rounded-full flex items-center gap-2">
+<div class="w-2 h-2 rounded-full bg-secondary-container"></div>
+<span class="text-[10px] uppercase font-bold tracking-widest text-on-surface">Moderate</span>
+</div>
+</div>
+</section>
+<div class="grid grid-cols-1 gap-4">
+<section class="bg-surface-container rounded-xl p-5 relative overflow-hidden group">
+<div class="absolute top-0 right-0 w-32 h-32 bg-primary/5 rounded-full -mr-16 -mt-16 blur-3xl"></div>
+<div class="relative z-10 flex justify-between items-center">
+<div class="space-y-1">
+<p class="text-[10px] uppercase tracking-[0.15em] font-bold text-slate-400">Recommended Entry</p>
+<h3 class="font-headline font-bold text-xl text-on-surface">Gate C West</h3>
+<p class="text-xs text-slate-400">Closest to your seating section 204</p>
+</div>
+<div class="flex flex-col items-end">
+<span class="font-headline font-extrabold text-4xl text-primary tracking-tighter">02</span>
+<span class="text-[10px] uppercase font-bold text-primary">min wait</span>
+</div>
+</div>
+<button class="mt-4 w-full bg-gradient-to-br from-[#68dbae] to-[#26a37a] text-[#10141a] font-bold py-3 rounded-lg flex items-center justify-center gap-2 active:scale-95 transition-transform duration-150">
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">directions</span>
+            Start Navigation
+          </button>
+</section>
+<section class="bg-surface-container rounded-xl overflow-hidden">
+<div class="px-5 py-4 flex justify-between items-end">
+<div>
+<p class="text-[10px] uppercase tracking-[0.15em] font-bold text-slate-400">Nearby Dining</p>
+<h3 class="font-headline font-bold text-lg text-on-surface">Shortest Queues</h3>
+</div>
+<button class="text-primary text-xs font-bold px-2 py-1 hover:bg-primary/10 rounded-md transition-colors">See all</button>
+</div>
+<div class="divide-y divide-outline-variant/10">
+<div class="flex items-center gap-4 px-5 py-4 hover:bg-[#31353c] transition-colors cursor-pointer group">
+<div class="w-12 h-12 rounded-lg bg-surface-container-high overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="gourmet craft burger with melted cheese and fresh greens on a brioche bun with cinematic lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB5wtDX09Y9DythM4ZkxXGYNQIh0qZt1EbdncYJ0C3oO3ZDw43kAimg_3Y-jwU48QFc32e8zB9MMNKkAJY7mJJQVZu0U3QM-fuYFY6bD8Qi3d9VEr9_4cDiSkmLhEnd-LKXKaRmYhhA-NcQPq1fHgdql5etUdkht2ZvPTbjMgSHtFYsNGzgUSJ_goP_Kdiq8XZ5GIkpVuEtQ98ytKDAvKKf_0fwsCcA_0vj7aeSY33999l9A91IX8gY0bk25Zk6FxwRtVxCXRF_epA2"/>
+</div>
+<div class="flex-1 min-w-0">
+<h4 class="font-semibold text-sm text-on-surface truncate">Gridiron Grill &amp; Co.</h4>
+<p class="text-xs text-slate-400">Burgers • Sector 12</p>
+</div>
+<div class="text-right">
+<p class="font-headline font-bold text-primary">5 min</p>
+<div class="flex gap-0.5 justify-end mt-1">
+<div class="w-1 h-3 bg-primary rounded-full"></div>
+<div class="w-1 h-3 bg-primary/20 rounded-full"></div>
+<div class="w-1 h-3 bg-primary/20 rounded-full"></div>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-4 px-5 py-4 hover:bg-[#31353c] transition-colors cursor-pointer">
+<div class="w-12 h-12 rounded-lg bg-surface-container-high overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="authentic wood-fired pepperoni pizza with bubbling cheese and fresh basil leaves on a rustic surface" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBNX8Om8gBTFQGxBqZye2oUc6TJoPuENgTeWPVilCG6F2znj1LHRbbP9TT5Vvos_gTOnnsztVX8EU43pB6CkwVJdMujVaonrDxA-FQ-J5dIb85AYQLRikIIeBHa_yhUWDXL1fRu1IpPV2czb_MBN_iPwuFscYZDn102_qZPeoPrR3k5CumIaNsTFK-R3oIjmq9qpLz3qx6eaGNUO1vPC-6anso6UZXm4oktcMWx26GanrpYCjuOhhmto2QwYRF2qUSyuiQUaziN1-ug"/>
+</div>
+<div class="flex-1 min-w-0">
+<h4 class="font-semibold text-sm text-on-surface truncate">Baseline Pizza Parlor</h4>
+<p class="text-xs text-slate-400">Italian • Sector 14</p>
+</div>
+<div class="text-right">
+<p class="font-headline font-bold text-secondary-container">12 min</p>
+<div class="flex gap-0.5 justify-end mt-1">
+<div class="w-1 h-3 bg-secondary-container rounded-full"></div>
+<div class="w-1 h-3 bg-secondary-container rounded-full"></div>
+<div class="w-1 h-3 bg-secondary-container/20 rounded-full"></div>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-4 px-5 py-4 hover:bg-[#31353c] transition-colors cursor-pointer">
+<div class="w-12 h-12 rounded-lg bg-surface-container-high overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="colorful variety of authentic street tacos with lime wedges and fresh cilantro on a dark plate" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDqojoaDla1rjb1JhF6ttb-g5DYEBImktqeonTnX2RenUFWrLI8liGnK9-197hbwid7vu9fvKAfZunBVkZU0MuC8rcaLNTXmG8R58U2gjY2vJsUTupT5ddYJCDCLso2uQjSz1sztmJPUSMtgZ7YCMhdPqLDrewKbpZc7Uw_Mb_52MKf1aNezvswvZQEFRZYpisyy8h_UhacQdayQfBz7gtV58BNz0A9VOVmGCX2QeBRq18MLZ3sSRcTKwQBKohvyv1kNf23k4kWnFD5"/>
+</div>
+<div class="flex-1 min-w-0">
+<h4 class="font-semibold text-sm text-on-surface truncate">Touchdown Tacos</h4>
+<p class="text-xs text-slate-400">Mexican • Sector 9</p>
+</div>
+<div class="text-right">
+<p class="font-headline font-bold text-tertiary-container">25 min</p>
+<div class="flex gap-0.5 justify-end mt-1">
+<div class="w-1 h-3 bg-tertiary-container rounded-full"></div>
+<div class="w-1 h-3 bg-tertiary-container rounded-full"></div>
+<div class="w-1 h-3 bg-tertiary-container rounded-full"></div>
+</div>
+</div>
+</div>
+</div>
+</section>
+</div>
+</main>
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-end px-4 pb-6 bg-[#10141a]/90 backdrop-blur-2xl max-w-md mx-auto shadow-[0_-8px_24px_rgba(0,56,39,0.4)] rounded-t-3xl border-t border-white/5">
+<div class="flex flex-col items-center justify-center bg-gradient-to-br from-[#68dbae] to-[#26a37a] text-[#10141a] rounded-2xl p-3 mb-2 active:opacity-80 scale-90 active:scale-100 transition-all">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">explore</span>
+<span class="font-inter text-[10px] uppercase tracking-widest mt-1 font-bold">Map</span>
+</div>
+<div class="flex flex-col items-center justify-center text-slate-400 p-3 active:opacity-80 scale-90 active:scale-100 transition-all">
+<span class="material-symbols-outlined">hourglass_empty</span>
+<span class="font-inter text-[10px] uppercase tracking-widest mt-1">Queues</span>
+</div>
+<div class="flex flex-col items-center justify-center text-slate-400 p-3 active:opacity-80 scale-90 active:scale-100 transition-all">
+<span class="material-symbols-outlined">fastfood</span>
+<span class="font-inter text-[10px] uppercase tracking-widest mt-1">Dining</span>
+</div>
+<div class="flex flex-col items-center justify-center text-slate-400 p-3 active:opacity-80 scale-90 active:scale-100 transition-all relative">
+<div class="absolute top-2 right-2 w-2 h-2 bg-tertiary-container rounded-full border-2 border-surface"></div>
+<span class="material-symbols-outlined">notifications_active</span>
+<span class="font-inter text-[10px] uppercase tracking-widest mt-1">Alerts</span>
+</div>
+</nav>
+</div>
+</body></html>

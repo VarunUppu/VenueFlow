@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>VenueFlow Command Center</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-secondary-fixed": "#261a00",
+                        "on-secondary-container": "#6d5000",
+                        "on-primary-container": "#003121",
+                        "tertiary": "#ffb3ac",
+                        "surface-container-highest": "#31353c",
+                        "surface": "#10141a",
+                        "tertiary-container": "#ff544e",
+                        "inverse-primary": "#006c4e",
+                        "secondary-fixed": "#ffdfa0",
+                        "on-surface": "#dfe2eb",
+                        "error-container": "#93000a",
+                        "tertiary-fixed-dim": "#ffb3ac",
+                        "surface-container": "#1c2026",
+                        "primary-fixed": "#86f8c9",
+                        "surface-container-low": "#181c22",
+                        "on-primary-fixed-variant": "#00513a",
+                        "on-primary-fixed": "#002115",
+                        "on-secondary": "#402d00",
+                        "primary-container": "#26a37a",
+                        "tertiary-fixed": "#ffdad6",
+                        "error": "#ffb4ab",
+                        "surface-bright": "#353940",
+                        "on-background": "#dfe2eb",
+                        "background": "#10141a",
+                        "on-tertiary-container": "#5c0006",
+                        "surface-tint": "#68dbae",
+                        "on-surface-variant": "#bccac1",
+                        "on-error-container": "#ffdad6",
+                        "outline": "#87948c",
+                        "outline-variant": "#3d4943",
+                        "surface-container-high": "#262a31",
+                        "primary-fixed-dim": "#68dbae",
+                        "on-tertiary-fixed": "#410003",
+                        "secondary": "#ffe2ab",
+                        "on-tertiary": "#680008",
+                        "primary": "#68dbae",
+                        "inverse-on-surface": "#2d3137",
+                        "on-primary": "#003827",
+                        "secondary-container": "#ffbf00",
+                        "on-tertiary-fixed-variant": "#930010",
+                        "surface-variant": "#31353c",
+                        "inverse-surface": "#dfe2eb",
+                        "secondary-fixed-dim": "#fbbc00",
+                        "surface-container-lowest": "#0a0e14",
+                        "surface-dim": "#10141a",
+                        "on-secondary-fixed-variant": "#5c4300",
+                        "on-error": "#690005"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "1rem",
+                        "xl": "1.5rem",
+                        "full": "9999px"
+                    },
+                    "fontFamily": {
+                        "headline": ["Manrope"],
+                        "body": ["Inter"],
+                        "label": ["Inter"]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; background-color: #10141a; }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+        .glass-panel { background: rgba(27, 33, 41, 0.7); backdrop-filter: blur(12px); }
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+    </style>
+</head>
+<body class="text-on-surface bg-surface font-body overflow-hidden">
+<!-- SideNavBar (Authority: JSON) -->
+<aside class="h-screen w-64 fixed left-0 top-0 bg-[#10141a] flex flex-col border-r border-[#3d4943]/10 z-50">
+<div class="px-6 py-8">
+<h1 class="font-headline text-xl font-black text-primary tracking-tighter">VenueFlow</h1>
+<div class="mt-8">
+<p class="text-xs font-bold uppercase tracking-widest text-slate-500 mb-1">Command Center</p>
+<p class="text-sm font-medium text-primary">Stadium East Wing</p>
+</div>
+</div>
+<nav class="flex-1 px-2 space-y-1">
+<!-- Active: Map Overview (Mapped from JSON) -->
+<a class="flex items-center space-x-3 bg-[#1b2129] text-primary rounded-lg mx-2 px-4 py-3 transition-all duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="map">map</span>
+<span class="font-inter text-sm font-medium">Map Overview</span>
+</a>
+<a class="flex items-center space-x-3 text-slate-400 px-4 py-3 hover:bg-[#31353c] rounded-lg transition-all duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="grid_view">grid_view</span>
+<span class="font-inter text-sm font-medium">Zone Management</span>
+</a>
+<a class="flex items-center space-x-3 text-slate-400 px-4 py-3 hover:bg-[#31353c] rounded-lg transition-all duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="group">group</span>
+<span class="font-inter text-sm font-medium">Crowd Analytics</span>
+</a>
+<a class="flex items-center space-x-3 text-slate-400 px-4 py-3 hover:bg-[#31353c] rounded-lg transition-all duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="conveyor_belt">conveyor_belt</span>
+<span class="font-inter text-sm font-medium">Staff Dispatch</span>
+</a>
+<a class="flex items-center space-x-3 text-slate-400 px-4 py-3 hover:bg-[#31353c] rounded-lg transition-all duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="warning">warning</span>
+<span class="font-inter text-sm font-medium">Incident Logs</span>
+</a>
+</nav>
+<div class="p-6">
+<button class="w-full bg-gradient-to-br from-primary to-primary-container text-on-primary font-bold py-3 rounded-xl scale-95 active:scale-90 transition-transform">
+                Clear Zone
+            </button>
+</div>
+</aside>
+<!-- Main Content Shell -->
+<main class="pl-64 flex flex-col h-screen">
+<!-- TopAppBar (Authority: JSON) -->
+<header class="flex justify-between items-center px-8 py-4 w-full bg-[#10141a]/80 backdrop-blur-xl z-40 sticky top-0">
+<div class="flex items-center space-x-8">
+<div class="flex flex-col">
+<span class="text-xs font-bold text-slate-500 uppercase tracking-tighter">Live Event</span>
+<span class="text-lg font-headline font-bold text-on-surface">Grand Finale Tour: Night 2</span>
+</div>
+<div class="h-8 w-px bg-outline-variant/20"></div>
+<div class="flex flex-col">
+<span class="text-xs font-bold text-slate-500 uppercase tracking-tighter">Attendee Count</span>
+<span class="text-lg font-headline font-bold text-primary">64,218 / 68,000</span>
+</div>
+</div>
+<div class="flex items-center space-x-4">
+<div class="text-right mr-4">
+<p class="text-xs font-medium text-slate-400 uppercase">Current Time</p>
+<p class="text-sm font-bold font-headline">21:42:05 EST</p>
+</div>
+<button class="bg-tertiary-container text-on-tertiary-container px-6 py-2.5 rounded-full font-headline font-extrabold text-sm hover:opacity-90 active:scale-95 transition-all">
+                    Declare Incident
+                </button>
+<div class="flex items-center space-x-2 ml-4">
+<span class="material-symbols-outlined p-2 hover:bg-[#31353c] rounded-full transition-colors cursor-pointer" data-icon="notifications">notifications</span>
+<span class="material-symbols-outlined p-2 hover:bg-[#31353c] rounded-full transition-colors cursor-pointer" data-icon="account_circle">account_circle</span>
+</div>
+</div>
+</header>
+<!-- Dashboard Layout: Asymmetric Bento Grid -->
+<div class="flex-1 p-8 grid grid-cols-12 gap-6 overflow-y-auto no-scrollbar">
+<!-- Left Panel: Zone Status -->
+<div class="col-span-3 space-y-6">
+<section class="bg-surface-container rounded-xl p-6 shadow-sm">
+<h3 class="text-sm font-bold uppercase tracking-widest text-slate-500 mb-4">Zones Monitoring</h3>
+<div class="space-y-4">
+<!-- Zone Item -->
+<div class="flex items-center justify-between group p-2 hover:bg-surface-container-highest rounded-lg transition-colors">
+<div class="flex flex-col">
+<span class="text-sm font-semibold">North Concourse</span>
+<span class="text-xs text-slate-500">Gate A1-A12</span>
+</div>
+<span class="px-3 py-1 rounded-full text-[10px] font-bold bg-primary-container/20 text-primary uppercase">Optimal</span>
+</div>
+<div class="flex items-center justify-between group p-2 hover:bg-surface-container-highest rounded-lg transition-colors">
+<div class="flex flex-col">
+<span class="text-sm font-semibold">Main Arena Floor</span>
+<span class="text-xs text-slate-500">Mosh Pit Alpha</span>
+</div>
+<span class="px-3 py-1 rounded-full text-[10px] font-bold bg-secondary-container/20 text-secondary uppercase">Busy</span>
+</div>
+<div class="flex items-center justify-between group p-2 hover:bg-surface-container-highest rounded-lg transition-colors">
+<div class="flex flex-col">
+<span class="text-sm font-semibold">South Dining Hall</span>
+<span class="text-xs text-slate-500">Level 2 Plaza</span>
+</div>
+<span class="px-3 py-1 rounded-full text-[10px] font-bold bg-tertiary-container/20 text-tertiary uppercase">Crowded</span>
+</div>
+<div class="flex items-center justify-between group p-2 hover:bg-surface-container-highest rounded-lg transition-colors">
+<div class="flex flex-col">
+<span class="text-sm font-semibold">VIP Lounge</span>
+<span class="text-xs text-slate-500">East Wing Suites</span>
+</div>
+<span class="px-3 py-1 rounded-full text-[10px] font-bold bg-primary-container/20 text-primary uppercase">Optimal</span>
+</div>
+</div>
+</section>
+<section class="bg-surface-container rounded-xl p-6 h-[400px] flex flex-col">
+<h3 class="text-sm font-bold uppercase tracking-widest text-slate-500 mb-4">Gate Flow Metrics</h3>
+<div class="flex-1 space-y-6">
+<div>
+<div class="flex justify-between text-xs mb-2">
+<span class="font-medium">North Entrance</span>
+<span class="text-slate-400">42 people/min</span>
+</div>
+<div class="w-full bg-surface-container-highest h-2 rounded-full overflow-hidden">
+<div class="bg-primary h-full w-[40%]"></div>
+</div>
+</div>
+<div>
+<div class="flex justify-between text-xs mb-2">
+<span class="font-medium">East Gate (VIP)</span>
+<span class="text-slate-400">12 people/min</span>
+</div>
+<div class="w-full bg-surface-container-highest h-2 rounded-full overflow-hidden">
+<div class="bg-primary h-full w-[15%]"></div>
+</div>
+</div>
+<div>
+<div class="flex justify-between text-xs mb-2">
+<span class="font-medium">South Entrance</span>
+<span class="text-slate-400">88 people/min</span>
+</div>
+<div class="w-full bg-surface-container-highest h-2 rounded-full overflow-hidden">
+<div class="bg-secondary-container h-full w-[75%]"></div>
+</div>
+</div>
+<div>
+<div class="flex justify-between text-xs mb-2">
+<span class="font-medium">West Entrance</span>
+<span class="text-slate-400">105 people/min</span>
+</div>
+<div class="w-full bg-surface-container-highest h-2 rounded-full overflow-hidden">
+<div class="bg-tertiary-container h-full w-[92%]"></div>
+</div>
+</div>
+</div>
+</section>
+</div>
+<!-- Main Panel: Heatmap (The "Digital Conductor" Core) -->
+<div class="col-span-6">
+<div class="relative bg-surface-container-lowest rounded-xl overflow-hidden h-[calc(100vh-180px)] border border-outline-variant/10 shadow-2xl">
+<div class="absolute inset-0 opacity-40">
+<img alt="Venue Blueprint" class="w-full h-full object-cover grayscale" data-alt="top-down blueprint of a modern architectural stadium layout with geometric sections and structural detail" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCHD0PHgDjsqNj5wVNZV9QTLB03VH06mGAb8eWCzWvb8Q8O4aPqpVB1Eo9oV13TDFChtEJftw-5zCsCqdbGHKjK2NXakaOU91vxuyxzu5hjEtagC5_eMuxbxSkB8Y-nJ3cukTAQnmtJixnBctUBB1GUEwehh_tvdiPtmCUoWGlN0zbJVjknsUknTbxLZaKb3WwKYjJjkrMbjnXuOeeKVzPnjsemQPbzNoFgBsoJBNfRocNafPcm7ReEWQVYu2fdSHKidXeej6nycNvU"/>
+</div>
+<!-- Heatmap Overlays -->
+<div class="absolute inset-0 bg-gradient-to-t from-surface to-transparent pointer-events-none"></div>
+<!-- Pulsing Heat Markers -->
+<div class="absolute top-1/4 left-1/3 w-32 h-32 bg-tertiary-container/40 rounded-full blur-3xl animate-pulse"></div>
+<div class="absolute top-1/2 right-1/4 w-48 h-48 bg-primary-container/20 rounded-full blur-3xl"></div>
+<div class="absolute bottom-1/4 left-1/2 w-40 h-40 bg-secondary-container/30 rounded-full blur-3xl"></div>
+<!-- Map Labels -->
+<div class="absolute top-[28%] left-[32%] bg-surface-container-highest/80 backdrop-blur-md px-3 py-1.5 rounded-lg border border-tertiary-container/30">
+<p class="text-[10px] font-black uppercase text-tertiary">Critical Congestion</p>
+<p class="text-xs font-bold">North Concourse B</p>
+</div>
+<div class="absolute bottom-4 left-4 flex space-x-2">
+<div class="flex items-center space-x-2 bg-surface-container/90 px-3 py-2 rounded-lg text-xs font-medium border border-outline-variant/10">
+<span class="w-2 h-2 rounded-full bg-primary"></span>
+<span>Low Density</span>
+</div>
+<div class="flex items-center space-x-2 bg-surface-container/90 px-3 py-2 rounded-lg text-xs font-medium border border-outline-variant/10">
+<span class="w-2 h-2 rounded-full bg-secondary-container"></span>
+<span>Medium Density</span>
+</div>
+<div class="flex items-center space-x-2 bg-surface-container/90 px-3 py-2 rounded-lg text-xs font-medium border border-outline-variant/10">
+<span class="w-2 h-2 rounded-full bg-tertiary-container"></span>
+<span>High Density</span>
+</div>
+</div>
+<div class="absolute top-4 right-4 flex space-x-2">
+<button class="bg-surface-container-highest/90 p-2 rounded-lg hover:bg-surface-bright transition-colors">
+<span class="material-symbols-outlined text-sm" data-icon="zoom_in">zoom_in</span>
+</button>
+<button class="bg-surface-container-highest/90 p-2 rounded-lg hover:bg-surface-bright transition-colors">
+<span class="material-symbols-outlined text-sm" data-icon="zoom_out">zoom_out</span>
+</button>
+<button class="bg-surface-container-highest/90 p-2 rounded-lg hover:bg-surface-bright transition-colors">
+<span class="material-symbols-outlined text-sm" data-icon="layers">layers</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Right Panel: Logs & Feeds -->
+<div class="col-span-3 space-y-6 flex flex-col h-[calc(100vh-180px)]">
+<section class="bg-surface-container rounded-xl p-6 shadow-sm flex-1 flex flex-col overflow-hidden">
+<h3 class="text-sm font-bold uppercase tracking-widest text-slate-500 mb-4 flex justify-between items-center">
+                        Incident Feed
+                        <span class="text-[10px] text-tertiary bg-tertiary-container/10 px-2 py-0.5 rounded">3 Active</span>
+</h3>
+<div class="flex-1 overflow-y-auto no-scrollbar space-y-4">
+<!-- Log Item -->
+<div class="p-3 bg-surface-container-low rounded-lg border-l-4 border-tertiary-container">
+<div class="flex justify-between items-start mb-1">
+<span class="text-xs font-bold text-tertiary">CRITICAL</span>
+<span class="text-[10px] text-slate-500">21:38</span>
+</div>
+<p class="text-sm font-medium leading-tight">Elevator E4 Stall</p>
+<p class="text-[11px] text-slate-500 mt-1">Maintenance dispatched. 6 occupants reported.</p>
+</div>
+<div class="p-3 bg-surface-container-low rounded-lg border-l-4 border-secondary-container">
+<div class="flex justify-between items-start mb-1">
+<span class="text-xs font-bold text-secondary">ADVISORY</span>
+<span class="text-[10px] text-slate-500">21:35</span>
+</div>
+<p class="text-sm font-medium leading-tight">Bottle-neck at Gate 14</p>
+<p class="text-[11px] text-slate-500 mt-1">Suggest diverting North-bound traffic to Gate 16.</p>
+</div>
+<div class="p-3 bg-surface-container-low rounded-lg border-l-4 border-primary">
+<div class="flex justify-between items-start mb-1">
+<span class="text-xs font-bold text-primary">INFO</span>
+<span class="text-[10px] text-slate-500">21:28</span>
+</div>
+<p class="text-sm font-medium leading-tight">Staff Rotation: Sector G</p>
+<p class="text-[11px] text-slate-500 mt-1">Sector G security shift complete. All clear.</p>
+</div>
+<div class="p-3 bg-surface-container-low rounded-lg border-l-4 border-tertiary-container opacity-80">
+<div class="flex justify-between items-start mb-1">
+<span class="text-xs font-bold text-tertiary">RESOLVED</span>
+<span class="text-[10px] text-slate-500">21:12</span>
+</div>
+<p class="text-sm font-medium leading-tight line-through text-slate-500">Medical: Section 204</p>
+<p class="text-[11px] text-slate-600 mt-1">Minor slip. Patient treated on-site. Record closed.</p>
+</div>
+</div>
+</section>
+<section class="bg-surface-container-highest rounded-xl p-6 h-48 flex items-center justify-center relative overflow-hidden group cursor-pointer">
+<img alt="CCTV Feed" class="absolute inset-0 w-full h-full object-cover opacity-30 group-hover:scale-105 transition-transform duration-500" data-alt="CCTV security camera view of a crowded stadium concourse with grainy film texture and time-stamped overlay" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAWJloJ4FoGy3XIMigT71e6jn3UUxZyJKuD5D0Q1Ol27nOE0DOxedPSrI9ZeLd04G0oii08Z-cM6ZfKI8tYvTYzAL4v9WRG70dygx8ZpSYWeGx_f2IWqLvJQWWGT35c76s0KJjF22TdNyy5yHdLgZof58JUq6XYTvR-kYUqckN2xAUxcqGVoDvQg47T4WBxCgJDnnYNMCZMldRtelEAqmLuGj2PFt8PY2Ow3yPxn-R5YWPibcsncbg_n3Dv_IljeYIU1-RlsO-jXMSW"/>
+<div class="absolute inset-0 bg-gradient-to-br from-tertiary-container/20 to-transparent"></div>
+<div class="relative text-center">
+<span class="material-symbols-outlined text-tertiary mb-2" data-icon="videocam">videocam</span>
+<p class="text-xs font-bold uppercase tracking-widest">Live View: Hotzone B</p>
+</div>
+</section>
+</div>
+</div>
+</main>
+<!-- Bottom Mobile Nav (Authority: JSON - Hidden on Desktop) -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full z-50 flex justify-around items-end px-4 pb-6 bg-[#10141a]/90 backdrop-blur-2xl rounded-t-3xl shadow-[0_-8px_24px_rgba(0,56,39,0.4)]">
+<div class="flex flex-col items-center justify-center bg-gradient-to-br from-[#68dbae] to-[#26a37a] text-[#10141a] rounded-2xl p-3 mb-2">
+<span class="material-symbols-outlined" data-icon="explore">explore</span>
+<span class="font-inter text-[10px] uppercase tracking-widest">Map</span>
+</div>
+<div class="flex flex-col items-center justify-center text-slate-400 p-3">
+<span class="material-symbols-outlined" data-icon="hourglass_empty">hourglass_empty</span>
+<span class="font-inter text-[10px] uppercase tracking-widest">Queues</span>
+</div>
+<div class="flex flex-col items-center justify-center text-slate-400 p-3">
+<span class="material-symbols-outlined" data-icon="fastfood">fastfood</span>
+<span class="font-inter text-[10px] uppercase tracking-widest">Dining</span>
+</div>
+<div class="flex flex-col items-center justify-center text-slate-400 p-3">
+<span class="material-symbols-outlined" data-icon="notifications_active">notifications_active</span>
+<span class="font-inter text-[10px] uppercase tracking-widest">Alerts</span>
+</div>
+</nav>
+</body></html>

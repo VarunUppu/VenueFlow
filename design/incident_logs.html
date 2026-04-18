@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Incident Logs | VenueFlow</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;700;800&amp;family=Inter:wght@400;500;600&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "secondary": "#ffe2ab",
+                        "on-primary-fixed-variant": "#00513a",
+                        "surface-container-lowest": "#0a0e14",
+                        "on-secondary-fixed-variant": "#5c4300",
+                        "tertiary": "#ffb3ac",
+                        "surface-variant": "#31353c",
+                        "on-surface-variant": "#bccac1",
+                        "tertiary-fixed": "#ffdad6",
+                        "surface-bright": "#353940",
+                        "inverse-primary": "#006c4e",
+                        "error": "#ffb4ab",
+                        "secondary-container": "#ffbf00",
+                        "primary-container": "#26a37a",
+                        "on-error-container": "#ffdad6",
+                        "primary-fixed": "#86f8c9",
+                        "surface-dim": "#10141a",
+                        "surface-tint": "#68dbae",
+                        "surface-container-highest": "#31353c",
+                        "tertiary-fixed-dim": "#ffb3ac",
+                        "on-primary-fixed": "#002115",
+                        "on-surface": "#dfe2eb",
+                        "on-primary-container": "#003121",
+                        "on-primary": "#003827",
+                        "error-container": "#93000a",
+                        "primary-fixed-dim": "#68dbae",
+                        "on-tertiary-fixed-variant": "#930010",
+                        "tertiary-container": "#ff544e",
+                        "on-secondary-fixed": "#261a00",
+                        "on-secondary-container": "#6d5000",
+                        "on-secondary": "#402d00",
+                        "outline": "#87948c",
+                        "primary": "#68dbae",
+                        "on-error": "#690005",
+                        "background": "#10141a",
+                        "outline-variant": "#3d4943",
+                        "on-tertiary": "#680008",
+                        "secondary-fixed-dim": "#fbbc00",
+                        "secondary-fixed": "#ffdfa0",
+                        "surface-container-high": "#262a31",
+                        "on-tertiary-fixed": "#410003",
+                        "inverse-surface": "#dfe2eb",
+                        "surface-container-low": "#181c22",
+                        "on-tertiary-container": "#5c0006",
+                        "on-background": "#dfe2eb",
+                        "surface-container": "#1c2026",
+                        "surface": "#10141a",
+                        "inverse-on-surface": "#2d3137"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "fontFamily": {
+                        "headline": ["Manrope"],
+                        "body": ["Inter"],
+                        "label": ["Inter"]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            background-color: #10141a;
+            color: #dfe2eb;
+            font-family: 'Inter', sans-serif;
+        }
+        .hide-scrollbar::-webkit-scrollbar { display: none; }
+        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+</head>
+<body class="flex min-h-screen overflow-hidden">
+<!-- SideNavBar (Execution from JSON) -->
+<aside class="hidden md:flex flex-col h-screen w-64 fixed left-0 top-0 bg-[#10141a] border-r border-[#3d4943]/10 z-30">
+<div class="px-6 py-8">
+<h2 class="font-headline font-bold text-lg text-[#68dbae] tracking-tight">Command Center</h2>
+<p class="font-label text-xs text-slate-400 uppercase tracking-widest mt-1">Stadium East Wing</p>
+</div>
+<nav class="flex-1 px-4 space-y-1">
+<a class="flex items-center px-4 py-3 text-slate-400 hover:bg-[#31353c] rounded-lg transition-all duration-200" href="#">
+<span class="material-symbols-outlined mr-3">map</span>
+<span class="font-inter text-sm font-medium">Map Overview</span>
+</a>
+<a class="flex items-center px-4 py-3 text-slate-400 hover:bg-[#31353c] rounded-lg transition-all duration-200" href="#">
+<span class="material-symbols-outlined mr-3">grid_view</span>
+<span class="font-inter text-sm font-medium">Zone Management</span>
+</a>
+<a class="flex items-center px-4 py-3 text-slate-400 hover:bg-[#31353c] rounded-lg transition-all duration-200" href="#">
+<span class="material-symbols-outlined mr-3">group</span>
+<span class="font-inter text-sm font-medium">Crowd Analytics</span>
+</a>
+<a class="flex items-center px-4 py-3 text-slate-400 hover:bg-[#31353c] rounded-lg transition-all duration-200" href="#">
+<span class="material-symbols-outlined mr-3">conveyor_belt</span>
+<span class="font-inter text-sm font-medium">Staff Dispatch</span>
+</a>
+<!-- Active State Logic: Incident Logs is the current page -->
+<a class="flex items-center bg-[#1b2129] text-[#68dbae] rounded-lg px-4 py-3 transition-all duration-200" href="#">
+<span class="material-symbols-outlined mr-3">warning</span>
+<span class="font-inter text-sm font-medium">Incident Logs</span>
+</a>
+</nav>
+<div class="p-6">
+<button class="w-full bg-gradient-to-br from-[#68dbae] to-[#26a37a] text-[#10141a] font-bold py-3 rounded-xl transition-all active:scale-95 duration-150">
+                Clear Zone
+            </button>
+</div>
+</aside>
+<main class="flex-1 md:ml-64 flex flex-col h-screen">
+<!-- TopAppBar (Execution from JSON) -->
+<header class="flex justify-between items-center px-6 py-4 w-full bg-[#10141a]/80 backdrop-blur-xl sticky top-0 z-20">
+<div class="flex items-center gap-4">
+<span class="text-xl font-black text-[#68dbae] tracking-tighter font-headline">VenueFlow</span>
+</div>
+<div class="flex items-center gap-4">
+<button class="bg-[#1b2129] text-[#68dbae] px-4 py-2 rounded-lg font-manrope font-bold tracking-tight hover:bg-[#31353c] transition-colors active:scale-95 duration-150">
+                    Declare Incident
+                </button>
+<div class="flex gap-2">
+<button class="p-2 text-slate-400 hover:bg-[#31353c] rounded-full transition-colors">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="p-2 text-slate-400 hover:bg-[#31353c] rounded-full transition-colors">
+<span class="material-symbols-outlined">account_circle</span>
+</button>
+</div>
+</div>
+</header>
+<!-- Main Content Area -->
+<div class="flex-1 overflow-y-auto p-6 space-y-6 hide-scrollbar">
+<!-- Page Header / Stats Bento -->
+<section class="grid grid-cols-1 lg:grid-cols-12 gap-4">
+<div class="lg:col-span-8 flex flex-col justify-center">
+<h1 class="text-3xl font-headline font-extrabold text-on-surface tracking-tight mb-2">Incident Registry</h1>
+<p class="text-on-surface-variant max-w-2xl font-body">Real-time audit trail of all security and logistical events within the stadium perimeter. Ensure all critical items are resolved before egress begins.</p>
+</div>
+<div class="lg:col-span-4 grid grid-cols-2 gap-4">
+<div class="bg-surface-container-high p-4 rounded-xl">
+<span class="block text-tertiary font-label text-[10px] uppercase tracking-widest mb-1">Active Critical</span>
+<span class="text-2xl font-headline font-bold">12</span>
+</div>
+<div class="bg-surface-container-high p-4 rounded-xl">
+<span class="block text-primary font-label text-[10px] uppercase tracking-widest mb-1">Resolved Today</span>
+<span class="text-2xl font-headline font-bold">48</span>
+</div>
+</div>
+</section>
+<!-- Filter Controls Shell -->
+<section class="bg-surface-container rounded-2xl p-4 flex flex-wrap items-center gap-4">
+<div class="flex-1 min-w-[280px] relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline-variant">search</span>
+<input class="w-full bg-surface-container-low border-none rounded-xl pl-10 pr-4 py-3 text-sm text-on-surface placeholder:text-outline focus:ring-2 focus:ring-primary-container transition-all" placeholder="Search by ID, reporter or keyword..." type="text"/>
+</div>
+<div class="flex items-center gap-2">
+<button class="flex items-center gap-2 px-4 py-2 bg-surface-container-high rounded-lg text-sm font-medium hover:bg-surface-container-highest transition-colors">
+<span class="material-symbols-outlined text-sm">tune</span>
+                        Severity
+                    </button>
+<button class="flex items-center gap-2 px-4 py-2 bg-surface-container-high rounded-lg text-sm font-medium hover:bg-surface-container-highest transition-colors">
+<span class="material-symbols-outlined text-sm">location_on</span>
+                        Location
+                    </button>
+<button class="flex items-center gap-2 px-4 py-2 bg-surface-container-high rounded-lg text-sm font-medium hover:bg-surface-container-highest transition-colors">
+<span class="material-symbols-outlined text-sm">history</span>
+                        Date Range
+                    </button>
+</div>
+</section>
+<!-- Data Table Canvas -->
+<section class="bg-surface-container rounded-2xl overflow-hidden mb-20">
+<div class="overflow-x-auto">
+<table class="w-full text-left border-separate border-spacing-0">
+<thead>
+<tr class="bg-surface-container-high">
+<th class="px-6 py-4 font-label text-[10px] uppercase tracking-widest text-outline">Incident ID</th>
+<th class="px-6 py-4 font-label text-[10px] uppercase tracking-widest text-outline">Type</th>
+<th class="px-6 py-4 font-label text-[10px] uppercase tracking-widest text-outline">Severity</th>
+<th class="px-6 py-4 font-label text-[10px] uppercase tracking-widest text-outline">Location</th>
+<th class="px-6 py-4 font-label text-[10px] uppercase tracking-widest text-outline">Status</th>
+<th class="px-6 py-4 font-label text-[10px] uppercase tracking-widest text-outline">Reporter</th>
+<th class="px-6 py-4 font-label text-[10px] uppercase tracking-widest text-outline">Actions</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant/10">
+<!-- Row 1: Critical -->
+<tr class="hover:bg-surface-container-highest transition-colors group">
+<td class="px-6 py-4 text-sm font-mono text-on-surface">#INC-9204</td>
+<td class="px-6 py-4 text-sm text-on-surface">Medical Emergency</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-tertiary-container/20 text-tertiary uppercase">Critical</span>
+</td>
+<td class="px-6 py-4 text-sm text-on-surface-variant">Gate 4 - Concourse B</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-2">
+<span class="h-2 w-2 rounded-full bg-tertiary animate-pulse"></span>
+<span class="text-sm font-medium text-on-surface">Active</span>
+</div>
+</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-2">
+<div class="w-6 h-6 rounded-full bg-surface-container-highest overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="portrait of a stadium security staff member in uniform with focused expression" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBhC6d1E3N151XsWzxaprUuWbBmLzzxS_CbDo-01wSk6R_EpUMYXDLJ5ZJiDMQIksDaX2KAZpt5HEoPsUQXGjM2s__52sqBVwKfBmkcbtoL4QRnr7oAwVAgUQOwrLS_8PTb8G1_TYfKopVs38dxrV6utdpvTeZF08Uwl2s6m1drfkSIWD-E25G_0S6KJX567hVCfgUNaO2w1y47S8NrIgO7AhulJVBqQGhOMUvzE8Is9rEMUlGP6J9VrtXEQeTe4p7a1tUvSK0pm6CK"/>
+</div>
+<span class="text-xs text-on-surface">J. Miller</span>
+</div>
+</td>
+<td class="px-6 py-4">
+<button class="text-primary hover:underline text-xs font-bold">View Detail</button>
+</td>
+</tr>
+<!-- Row 2: Advisory -->
+<tr class="hover:bg-surface-container-highest transition-colors">
+<td class="px-6 py-4 text-sm font-mono text-on-surface">#INC-9198</td>
+<td class="px-6 py-4 text-sm text-on-surface">Technical Fault</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-secondary-container/20 text-secondary-fixed-dim uppercase">Advisory</span>
+</td>
+<td class="px-6 py-4 text-sm text-on-surface-variant">Press Box - Level 3</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-2">
+<span class="h-2 w-2 rounded-full bg-outline"></span>
+<span class="text-sm font-medium text-outline">Resolved</span>
+</div>
+</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-2">
+<div class="w-6 h-6 rounded-full bg-surface-container-highest overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="close-up profile photo of male technical support staff wearing a communication headset" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAeno24ZsHa-uTzbv_T4vsLKQJVHUGNHsjFfaPfTGJcavBCc4b30C336Q0s0tG6L3UdJ_60CtctWA9ufyjbGEbPXBLW3xy0S1jkcc5PKq_OGqMqMVJeldWDrVi92gHOWrozxOKNkubfU4O-nsy6d5k9R-pU5fj9k83xgh3A1LFhQrrm-SeTM5z6mYImSdgmdfWTbiQcWRcwUqVVfONtOLThheaX7rP5WpoueFliMT5wguMjkv9ZoQqdWRy6c5EvFgz8Hd0_BC3z4A8h"/>
+</div>
+<span class="text-xs text-on-surface">S. Chen</span>
+</div>
+</td>
+<td class="px-6 py-4">
+<button class="text-primary hover:underline text-xs font-bold">View Detail</button>
+</td>
+</tr>
+<!-- Row 3: Info -->
+<tr class="hover:bg-surface-container-highest transition-colors">
+<td class="px-6 py-4 text-sm font-mono text-on-surface">#INC-9195</td>
+<td class="px-6 py-4 text-sm text-on-surface">Crowd Surge</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-primary-container/20 text-primary uppercase">Info</span>
+</td>
+<td class="px-6 py-4 text-sm text-on-surface-variant">Main Entrance - Plaza</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-2">
+<span class="h-2 w-2 rounded-full bg-outline"></span>
+<span class="text-sm font-medium text-outline">Resolved</span>
+</div>
+</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-2">
+<div class="w-6 h-6 rounded-full bg-surface-container-highest overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="professional headshot of female operation manager with dark hair in a brightly lit environment" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAXTBpB-2Kda-X1GJ9tqhEJXGxSlEBnKjKfZwMyD5LOjcIKVgC8cbaRi0oiDMTtdRlTmCu2U1yLfEoMfE9_52LmZ6rVGZkVRK7__0J8Hn4j6xyjQJnrqrLWf216ZwyeT3oubluEdX1Fob7N1Q6fXoVWrs7oxZIGHYM2iNPH8klnJvNcBMUud6zM5RvhF7p5L4DWGRl4NGQTLqGrzsl6i3TfnpclsGzRYN1ojiMU40v2FjJIZSqIcdRpuUv4TqeTXuUALJLSyuLqrGGF"/>
+</div>
+<span class="text-xs text-on-surface">L. Thompson</span>
+</div>
+</td>
+<td class="px-6 py-4">
+<button class="text-primary hover:underline text-xs font-bold">View Detail</button>
+</td>
+</tr>
+<!-- Row 4: Critical -->
+<tr class="hover:bg-surface-container-highest transition-colors">
+<td class="px-6 py-4 text-sm font-mono text-on-surface">#INC-9192</td>
+<td class="px-6 py-4 text-sm text-on-surface">Security Breach</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-tertiary-container/20 text-tertiary uppercase">Critical</span>
+<span class="ml-1 material-symbols-outlined text-[12px] text-tertiary align-middle">priority_high</span>
+</td>
+<td class="px-6 py-4 text-sm text-on-surface-variant">Restricted Zone - Tunnel A</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-2">
+<span class="h-2 w-2 rounded-full bg-tertiary animate-pulse"></span>
+<span class="text-sm font-medium text-on-surface">Escalated</span>
+</div>
+</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-2">
+<div class="w-6 h-6 rounded-full bg-surface-container-highest overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="confident male security supervisor looking directly into camera with sharp features" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAiwDmoMXaMF3ppTCOVONVc2bypSHZJzMGm1m1LuWEFzYpduAMArKvWj4vpahtA3VuMONf3HdNGdzXfCHpixNF7XiMJGuJU0lk2dwB5wSq2pF83_r3erts1qTFcIhjS1QmUKIJGtw6sJWH2AxP6TE5xZyJid5e2GKGZ8OFBqeWQOOWz7lgzOEc2UGJ8B5Kc2pinfKLiNHLlthmBM4zPoQCd2BJkrrVKF4DKgcpL7sYbj4381BOqwhZVyFIMMqaSnhSeteu0gIQMVAtz"/>
+</div>
+<span class="text-xs text-on-surface">R. Vance</span>
+</div>
+</td>
+<td class="px-6 py-4">
+<button class="text-primary hover:underline text-xs font-bold">View Detail</button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Pagination -->
+<div class="px-6 py-4 flex items-center justify-between border-t border-outline-variant/10">
+<span class="text-xs text-outline font-label">Showing 1-15 of 248 incidents</span>
+<div class="flex items-center gap-1">
+<button class="p-2 rounded-lg hover:bg-surface-container-highest text-outline transition-colors">
+<span class="material-symbols-outlined">chevron_left</span>
+</button>
+<button class="w-8 h-8 rounded-lg bg-primary-container text-on-primary-container text-xs font-bold">1</button>
+<button class="w-8 h-8 rounded-lg hover:bg-surface-container-highest text-outline text-xs font-bold transition-colors">2</button>
+<button class="w-8 h-8 rounded-lg hover:bg-surface-container-highest text-outline text-xs font-bold transition-colors">3</button>
+<button class="p-2 rounded-lg hover:bg-surface-container-highest text-outline transition-colors">
+<span class="material-symbols-outlined">chevron_right</span>
+</button>
+</div>
+</div>
+</section>
+</div>
+<!-- Mobile BottomNavBar (Execution from JSON) -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full z-50 flex justify-around items-end px-4 pb-6 bg-[#10141a]/90 backdrop-blur-2xl shadow-[0_-8px_24px_rgba(0,56,39,0.4)]">
+<a class="flex flex-col items-center justify-center text-slate-400 p-3" href="#">
+<span class="material-symbols-outlined">explore</span>
+<span class="font-inter text-[10px] uppercase tracking-widest mt-1">Map</span>
+</a>
+<a class="flex flex-col items-center justify-center text-slate-400 p-3" href="#">
+<span class="material-symbols-outlined">hourglass_empty</span>
+<span class="font-inter text-[10px] uppercase tracking-widest mt-1">Queues</span>
+</a>
+<a class="flex flex-col items-center justify-center text-slate-400 p-3" href="#">
+<span class="material-symbols-outlined">fastfood</span>
+<span class="font-inter text-[10px] uppercase tracking-widest mt-1">Dining</span>
+</a>
+<!-- Active state for Alerts/Incidents -->
+<a class="flex flex-col items-center justify-center bg-gradient-to-br from-[#68dbae] to-[#26a37a] text-[#10141a] rounded-2xl p-3 mb-2 shadow-lg" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">notifications_active</span>
+<span class="font-inter text-[10px] uppercase tracking-widest mt-1">Alerts</span>
+</a>
+</nav>
+</main>
+</body></html>

@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Alerts | STADIUM FLOW</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "secondary": "#ffe2ab",
+                        "on-primary-fixed-variant": "#00513a",
+                        "surface-container-lowest": "#0a0e14",
+                        "on-secondary-fixed-variant": "#5c4300",
+                        "tertiary": "#ffb3ac",
+                        "surface-variant": "#31353c",
+                        "on-surface-variant": "#bccac1",
+                        "tertiary-fixed": "#ffdad6",
+                        "surface-bright": "#353940",
+                        "inverse-primary": "#006c4e",
+                        "error": "#ffb4ab",
+                        "secondary-container": "#ffbf00",
+                        "primary-container": "#26a37a",
+                        "on-error-container": "#ffdad6",
+                        "primary-fixed": "#86f8c9",
+                        "surface-dim": "#10141a",
+                        "surface-tint": "#68dbae",
+                        "surface-container-highest": "#31353c",
+                        "tertiary-fixed-dim": "#ffb3ac",
+                        "on-primary-fixed": "#002115",
+                        "on-surface": "#dfe2eb",
+                        "on-primary-container": "#003121",
+                        "on-primary": "#003827",
+                        "error-container": "#93000a",
+                        "primary-fixed-dim": "#68dbae",
+                        "on-tertiary-fixed-variant": "#930010",
+                        "tertiary-container": "#ff544e",
+                        "on-secondary-fixed": "#261a00",
+                        "on-secondary-container": "#6d5000",
+                        "on-secondary": "#402d00",
+                        "outline": "#87948c",
+                        "primary": "#68dbae",
+                        "on-error": "#690005",
+                        "background": "#10141a",
+                        "outline-variant": "#3d4943",
+                        "on-tertiary": "#680008",
+                        "secondary-fixed-dim": "#fbbc00",
+                        "secondary-fixed": "#ffdfa0",
+                        "surface-container-high": "#262a31",
+                        "on-tertiary-fixed": "#410003",
+                        "inverse-surface": "#dfe2eb",
+                        "surface-container-low": "#181c22",
+                        "on-tertiary-container": "#5c0006",
+                        "on-background": "#dfe2eb",
+                        "surface-container": "#1c2026",
+                        "surface": "#10141a",
+                        "inverse-on-surface": "#2d3137"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "fontFamily": {
+                        "headline": ["Manrope"],
+                        "body": ["Inter"],
+                        "label": ["Inter"]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-panel {
+            background: rgba(49, 53, 60, 0.4);
+            backdrop-filter: blur(12px);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background font-body selection:bg-primary/30">
+<!-- TopAppBar -->
+<header class="bg-[#10141a] fixed top-0 w-full z-50 flex justify-between items-center px-6 h-16 w-full">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-[#68dbae]" data-icon="stadium">stadium</span>
+<h1 class="font-['Manrope'] uppercase tracking-widest text-sm font-bold text-[#68dbae]">STADIUM FLOW</h1>
+</div>
+<div class="flex items-center gap-4">
+<button class="hover:opacity-80 transition-opacity">
+<span class="material-symbols-outlined text-gray-400" data-icon="account_circle">account_circle</span>
+</button>
+</div>
+</header>
+<main class="pt-24 pb-32 px-6 max-w-2xl mx-auto">
+<div class="mb-8">
+<h2 class="font-headline text-3xl font-extrabold tracking-tight text-on-surface mb-2">Alert Center</h2>
+<p class="text-on-surface-variant text-sm">Real-time stadium updates and exclusive offers.</p>
+</div>
+<!-- Alerts Timeline -->
+<div class="relative space-y-6">
+<!-- Timeline Connector Line (Subtle) -->
+<div class="absolute left-6 top-4 bottom-4 w-px bg-outline-variant/20 hidden sm:block"></div>
+<!-- Urgent Alert Card -->
+<div class="relative group">
+<div class="absolute -left-2 top-1/2 -translate-y-1/2 w-1 h-12 bg-tertiary-container rounded-full hidden sm:block"></div>
+<div class="bg-surface-container-high rounded-xl p-5 shadow-lg flex gap-4 items-start border-l-4 border-tertiary-container sm:border-l-0">
+<div class="flex-shrink-0 w-12 h-12 rounded-full bg-tertiary-container/10 flex items-center justify-center text-tertiary-container">
+<span class="material-symbols-outlined" data-icon="warning" style="font-variation-settings: 'FILL' 1;">warning</span>
+</div>
+<div class="flex-grow">
+<div class="flex justify-between items-start mb-1">
+<h3 class="font-headline font-bold text-on-surface">Safety Notice: Section 204</h3>
+<span class="text-[10px] uppercase tracking-wider font-bold text-tertiary-container mt-1">2m ago</span>
+</div>
+<p class="text-sm text-on-surface-variant leading-relaxed">Structural maintenance in progress. Please use Gate 4B for exiting this sector. Follow floor marshals.</p>
+<div class="mt-4 flex gap-2">
+<button class="bg-tertiary-container/20 text-tertiary-container px-4 py-2 rounded-lg text-xs font-bold hover:bg-tertiary-container/30 transition-colors">View Map</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Gate Change Card -->
+<div class="relative group">
+<div class="bg-surface-container-low rounded-xl p-5 flex gap-4 items-start border-l-4 border-secondary-container sm:border-l-0">
+<div class="flex-shrink-0 w-12 h-12 rounded-full bg-secondary-container/10 flex items-center justify-center text-secondary-container">
+<span class="material-symbols-outlined" data-icon="info" style="font-variation-settings: 'FILL' 1;">info</span>
+</div>
+<div class="flex-grow">
+<div class="flex justify-between items-start mb-1">
+<h3 class="font-headline font-bold text-on-surface">Gate Change: South Exit</h3>
+<span class="text-[10px] uppercase tracking-wider font-bold text-on-surface-variant mt-1">15m ago</span>
+</div>
+<p class="text-sm text-on-surface-variant leading-relaxed">South Exit is currently at capacity. Express lanes have been rerouted to the West Plaza Wing.</p>
+</div>
+</div>
+</div>
+<!-- Promo/Offer Card (Editorial Style) -->
+<div class="relative group overflow-hidden rounded-xl bg-surface-container">
+<div class="h-32 w-full relative">
+<img alt="Pizza and drinks" class="w-full h-full object-cover opacity-60" data-alt="overhead shot of gourmet artisan pizza on a wooden board inside a modern stylish stadium lounge area with soft bokeh" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDEdLkO3hmoSUYlipb-_bSOeTwGfKi7Y0utlRPFBr23kU1eJnAV8jfbbO1yf35SpU9mJOw9ye3CHvpSHzrcickZLjEhUHl7jb2T6aJ4hzoI35_SfgY6KHj8hfBHS5gn50yNND7DQeFSBPjTwQ-67y-_SxjCSoye6_LoqG0aSB4UVLtwap7Lzet591RD9olWn7PlpZhLEYIrgmnCpy2NBM4ZpbLuCsaJC_jRYbCdDEZ5O-BCvVvfxTi4VLQxTOHBiJw1vSMNaGYzvRE2"/>
+<div class="absolute inset-0 bg-gradient-to-t from-surface-container to-transparent"></div>
+<div class="absolute bottom-3 left-5">
+<span class="bg-primary text-on-primary text-[10px] font-black px-2 py-0.5 rounded uppercase tracking-tighter">Limited Offer</span>
+</div>
+</div>
+<div class="p-5 flex gap-4 items-start">
+<div class="flex-shrink-0 w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined" data-icon="local_offer" style="font-variation-settings: 'FILL' 1;">local_offer</span>
+</div>
+<div class="flex-grow">
+<div class="flex justify-between items-start mb-1">
+<h3 class="font-headline font-bold text-on-surface">Flash Sale: Level 1 Dining</h3>
+<span class="text-[10px] uppercase tracking-wider font-bold text-on-surface-variant mt-1">42m ago</span>
+</div>
+<p class="text-sm text-on-surface-variant leading-relaxed">Get 30% off all beverages at 'The Goalpost Grill' until kick-off. Valid for mobile orders only.</p>
+<button class="mt-4 w-full bg-gradient-to-r from-primary to-primary-container text-on-primary font-bold py-3 rounded-xl active:scale-95 transition-transform">Claim Discount</button>
+</div>
+</div>
+</div>
+<!-- Operational Card -->
+<div class="relative group">
+<div class="bg-surface-container-low rounded-xl p-5 flex gap-4 items-start">
+<div class="flex-shrink-0 w-12 h-12 rounded-full bg-surface-container-highest flex items-center justify-center text-on-surface-variant">
+<span class="material-symbols-outlined" data-icon="schedule">schedule</span>
+</div>
+<div class="flex-grow">
+<div class="flex justify-between items-start mb-1">
+<h3 class="font-headline font-bold text-on-surface">Event Timeline Update</h3>
+<span class="text-[10px] uppercase tracking-wider font-bold text-on-surface-variant mt-1">1h ago</span>
+</div>
+<p class="text-sm text-on-surface-variant leading-relaxed">Half-time performance will feature the Youth Academy Parade. Gates reopen for entry in 15 minutes.</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Empty State Concept (Hidden by default) -->
+<!-- 
+        <div class="flex flex-col items-center justify-center py-20 text-center">
+            <span class="material-symbols-outlined text-6xl text-outline-variant mb-4" data-icon="notifications_off">notifications_off</span>
+            <h3 class="font-headline text-xl font-bold text-on-surface">All Quiet For Now</h3>
+            <p class="text-on-surface-variant text-sm mt-2 max-w-[240px]">We'll notify you here when there are updates about your stadium experience.</p>
+        </div> 
+        -->
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 w-full z-50 rounded-t-3xl border-t border-[#3d4943]/15 bg-[#10141a]/80 backdrop-blur-xl shadow-[0_-8px_24px_rgba(0,56,39,0.2)] flex justify-around items-center h-20 px-4 pb-4 w-full">
+<a class="flex flex-col items-center justify-center text-gray-500 hover:bg-[#31353c] transition-colors active:scale-90 transition-transform" href="#">
+<span class="material-symbols-outlined" data-icon="map">map</span>
+<span class="font-['Inter'] text-[10px] font-medium tracking-wide">Map</span>
+</a>
+<a class="flex flex-col items-center justify-center text-gray-500 hover:bg-[#31353c] transition-colors active:scale-90 transition-transform" href="#">
+<span class="material-symbols-outlined" data-icon="hourglass_empty">hourglass_empty</span>
+<span class="font-['Inter'] text-[10px] font-medium tracking-wide">Queues</span>
+</a>
+<a class="flex flex-col items-center justify-center text-gray-500 hover:bg-[#31353c] transition-colors active:scale-90 transition-transform" href="#">
+<span class="material-symbols-outlined" data-icon="restaurant">restaurant</span>
+<span class="font-['Inter'] text-[10px] font-medium tracking-wide">Dining</span>
+</a>
+<!-- Active State: Alerts -->
+<a class="flex flex-col items-center justify-center bg-[#68dbae]/10 text-[#68dbae] rounded-xl px-4 py-1.5 active:scale-90 transition-transform" href="#">
+<span class="material-symbols-outlined" data-icon="notifications" style="font-variation-settings: 'FILL' 1;">notifications</span>
+<span class="font-['Inter'] text-[10px] font-medium tracking-wide text-[#68dbae]">Alerts</span>
+</a>
+</nav>
+</body></html>
